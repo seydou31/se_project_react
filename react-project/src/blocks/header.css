@@ -1,0 +1,31 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__left{
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.header__right{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.header__button{
+    background-color: transparent;
+    border: none;
+}
+
+.header__button:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.header__avatar{
+    width: 40px;
+    height: 40px;
+}
