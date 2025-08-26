@@ -1,4 +1,14 @@
-.footer{
-    display: flex;
-    justify-content: space-between;
+.footer {
+  font-family: "Cabinet Grotesk", Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 40px;
+  padding: 0;
+}
+
+.footer__text {
+  margin: 0;
 }

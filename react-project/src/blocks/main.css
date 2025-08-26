@@ -1,3 +1,8 @@
-.main{
-    max-width: 100%;
+.main {
+  max-width: 100%;
+  margin-bottom: 85px;
+  font-family: "Cabinet Grotesk", Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
 }
