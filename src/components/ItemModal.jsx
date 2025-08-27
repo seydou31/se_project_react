@@ -7,7 +7,7 @@ export default function ItemModal({onClick, isOpen,  card}) {
         <button className="modal__close-btn" onClick={onClick}>
         <img
           src={closeBtn}
-          alt="closebutton"
+          alt="close preview modal"
           className="modal__close-btn-image"
         />
       </button>

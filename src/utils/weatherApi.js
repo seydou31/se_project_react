@@ -28,7 +28,7 @@ export function filteredWeatherData (data){
 function getWeatherCondition(temperature){
    if(temperature > 86){
     return "hot"
-   } else if(temperature => 66 && temperature < 86){
+   } else if(temperature >= 66 && temperature < 86){
 return "warm"
    } else {
 return "cold"
