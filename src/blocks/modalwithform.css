@@ -16,16 +16,22 @@
 }
 
 .modal__content {
+  font-family: "Cabinet Grotesk", Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
   position: relative;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   padding: 28px 28px 36px;
   width: 496px;
+  border-radius: 20px;
 }
 
 .modal__title {
   margin: 0 0 24px 0;
+  font-size: 16px;
 }
 
 .modal__form {
@@ -46,6 +52,7 @@
 }
 
 .modal__input {
+  width: 100%;
   display: block;
   margin: 8px 0 24px 0;
   padding: 0;

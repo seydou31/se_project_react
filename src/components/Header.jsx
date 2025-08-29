@@ -17,10 +17,12 @@ export default function Header({ onClick, weatherData }) {
         </p>
       </div>
       <div className="header__right">
+        <div className="header__btn-user">
         <button onClick={onClick} className="header__button" type="button">
           + Add clothes
         </button>
         <p className="header__user">Seydou Badiaka</p>
+        </div>
         <img className="header__avatar" alt="user-avatar" src={avatar} />
       </div>
     </header>

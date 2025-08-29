@@ -6,7 +6,7 @@ export  async function getWeather({latitude, longitude}, APIkey){
       return weatherData
   }
 } catch (err){
-    console.error(err)
+     throw new Error(err);
 }
     
 }

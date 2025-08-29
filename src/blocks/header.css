@@ -16,7 +16,8 @@
 .header__right {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  align-items: center;
+  gap: 12px;
 }
 
 .header__button {
@@ -26,6 +27,13 @@
   line-height: 24px;
   background-color: transparent;
   border: none;
+}
+
+.header__btn-user{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 20px;
 }
 
 .header__button:hover {
