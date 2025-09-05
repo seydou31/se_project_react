@@ -124,7 +124,7 @@ function App() {
           />
           <Routes>
             <Route
-              path="/se_project_react/"
+              path="/"
               element={
                 <Main
                   weatherData={weatherData}
@@ -134,7 +134,7 @@ function App() {
               }
             />
             <Route
-              path="/se_project_react/profile"
+              path="/profile"
               element={
                 <Profile clothes={clothes} handleCardClick={handleCardClick} onClick={handleOpenModalWithForm} />
               }
