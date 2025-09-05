@@ -91,9 +91,20 @@
   max-width: 124px;
   height: 36px;
   border-radius: 4px;
-  background-color: #0000004d;
+  background-color: #000;
   color: #fff;
   border: none;
+}
+
+ .modal__submit-btn:disabled{
+  background-color : #0000004D;
+  cursor: not-allowed;
+} 
+
+.modal__submit-btn:not(:disabled)hover{
+  cursor: pointer;
+  background-color: #00000099;
+
 }
 
 .modal__content_type_image {
@@ -115,6 +126,22 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal__del-btn{
+  font-family: "Cabinet Grotesk", Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  align-self: flex-start;
+  margin: 0;
+  padding: 2px 34px 0 0;
+  color: #FF4D00;
+  border: none;
+  background-color: transparent
+;
 }
 
 .modal__caption {
@@ -125,4 +152,41 @@
 .modal__weather {
   margin: 0;
   padding: 5px 0;
+}
+
+.modal__del-top{
+ text-align: center;
+ margin-bottom: 0;
+}
+
+.modal__content_type_delete{
+   font-family: "Cabinet Grotesk", Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  padding: 28px 28px 0 28px;
+}
+
+.modal__del-span{
+  display:block;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.modal__del-mdl{
+  margin-bottom: 24px;
+  color: #FF4D00;
+  border: none;
+  background-color: transparent;
+
+}
+
+.modal__del-btm{
+  margin-bottom: 60px;
+   border: none;
+  background-color: transparent;
+}
+
+.modal__validation{
+  color: #FF4D00;
 }

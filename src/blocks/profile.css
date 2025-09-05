@@ -1,0 +1,88 @@
+.profile {
+  display: flex;
+  gap: 116px;
+  width: 100%;
+  margin-top: 47px;
+  margin-bottom: 80px;
+}
+
+.profile__sidebar {
+  max-width: 229px;
+  width: 229px;
+  height: 56px;
+  display: flex;
+  gap: 16px;
+  font-family: "Cabinet Grotesk", Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  box-sizing: border-box;
+}
+
+.profile__avatar {
+  width: 56px;
+  height: 56px;
+}
+
+.profile__user {
+  width: 157px;
+  max-width: 157px;
+}
+
+.profile__content {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+
+.profile__items-hdr {
+  font-family: "Cabinet Grotesk", Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  box-sizing: border-box;
+}
+
+.profile__span {
+  padding: 0;
+  margin-right: 20px;
+}
+
+.profile__button {
+  font-family: "Cabinet Grotesk", Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: #00000099;
+}
+
+.profile__button:hover {
+  text-decoration: underline;
+}
+
+.profile__items {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.profile__link:link{
+  text-decoration: none;
+  color: #000;
+}

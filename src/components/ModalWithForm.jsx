@@ -8,6 +8,8 @@ export default function ModalWithForm({
   isOpen,
   onClick,
   dom,
+  onSubmit,
+  isFormValid
 }) {
   return (
     <div ref={dom} className={`modal ${isOpen ? "modal_is-opened" : ""}`}>
@@ -20,11 +22,11 @@ export default function ModalWithForm({
             className="modal__close-btn-image"
           />
         </button>
-        <form className="modal__form">
+        <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <button className="modal__submit-btn" type="submit">
+          <button className="modal__submit-btn" type="submit" disabled={!isFormValid}>
             {buttonText}
-          </button>
+          </button> 
         </form>
       </div>
     </div>

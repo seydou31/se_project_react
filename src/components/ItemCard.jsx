@@ -9,7 +9,7 @@ export default function ItemCard({item, onCardClick}){
     return (
        <li className="itemcard__item">
         <p className="itemcard__description">{item.name}</p>
-        <img onClick = {handleCardClick} className="itemcard__image" src={item.link} alt={item.name} />
+        <img onClick = {handleCardClick} className="itemcard__image" src={item.imageUrl} alt={item.name} />
        </li>
     )
 }
