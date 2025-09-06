@@ -53,4 +53,7 @@
 .header__link:link, .header__link:visited{
   text-decoration: none;
   color: #000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }

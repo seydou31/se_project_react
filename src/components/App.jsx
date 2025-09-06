@@ -70,7 +70,6 @@ function App() {
 
   useEffect(() => {
     getItems().then((data) => {
-      console.log(data)
       setClothes(data);
     }).catch(console.error)
   }, [])
@@ -95,7 +94,7 @@ function App() {
   }
 
   function onAddItem(data){
-     setClothes([...clothes, data]);
+     setClothes([data, ...clothes]);
      handleCloseModal();
   }
 

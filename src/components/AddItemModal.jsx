@@ -27,7 +27,6 @@ export default function AddItemModal({ isOpen, onClick, dom , onAddItem}) {
   
 
   function handleSubmit(e){
-    console.log("Button clicked!")
      e.preventDefault();
     if (validate()){
         addItem(values).then((data) => {
