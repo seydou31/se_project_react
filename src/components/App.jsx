@@ -1,20 +1,26 @@
+// React imports
 import { useState, useEffect, useRef } from "react";
+import { Routes, Route } from "react-router-dom";
+//Utils/Api imports
 import { getWeather, filteredWeatherData } from "../utils/weatherApi.js";
 import {
   coordinates,
   APIkey,
 } from "../utils/constants.js";
+import { getItems, deleteItem } from "../utils/api.js";
+// contexts imports
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
-import { Routes, Route } from "react-router-dom";
+//Components imports
 import Header from "./Header.jsx";
 import Main from "./Main.jsx";
 import Footer from "./Footer.jsx";
 import ItemModal from "./ItemModal.jsx";
 import Profile from "./Profile.jsx";
-import "../blocks/app.css";
 import AddItemModal from "./AddItemModal.jsx";
 import DeleteModal from "./DeleteModal.jsx";
-import { getItems } from "../utils/api.js";
+//css imports
+import "../blocks/app.css";
+
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -63,9 +69,7 @@ function App() {
         const filteredData = filteredWeatherData(data);
         setWeatherData(filteredData);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch(console.error);
   }, []);
 
   useEffect(() => {
@@ -102,9 +106,13 @@ function App() {
     setActiveModal("delete");
   }
 
-  function handleDeleteCard(card, clothes){
-    setClothes(clothes.filter((item) => item._id !== card._id))
-    handleCloseModal();
+  function handleDeleteCard(card){
+     deleteItem(card)
+    .then(() => {
+      setClothes(clothes.filter((item) => item._id !== card._id));
+      handleCloseModal();
+    })
+    .catch(console.error);
   }
 
 
@@ -118,8 +126,6 @@ function App() {
           <Header
             onClick={handleOpenModalWithForm}
             weatherData={weatherData}
-            currentTemperatureUnit={currentTemperatureUnit}
-            handleCurrentTemperatureUnit={handleCurrentTemperatureUnit}
           />
           <Routes>
             <Route

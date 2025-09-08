@@ -1,7 +1,7 @@
 import ModalWithForm from "./ModalWithForm.jsx";
-import { useForm } from "../../src/hooks/useForm.js";
+import { useForm} from "../../src/hooks/useForm.js";
 import { addItem } from "../utils/api.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function AddItemModal({ isOpen, onClick, dom , onAddItem}) {
   const { values, handleChange, handleReset } = useForm({
@@ -12,7 +12,11 @@ export default function AddItemModal({ isOpen, onClick, dom , onAddItem}) {
   
  const [errors, setErrors] =  useState({});
  
-
+useEffect(() => {
+  if (!isOpen) {
+    handleReset();
+  }
+}, [isOpen, handleReset]);
 
 
  function validate(){
@@ -31,7 +35,6 @@ export default function AddItemModal({ isOpen, onClick, dom , onAddItem}) {
     if (validate()){
         addItem(values).then((data) => {
         onAddItem(data)
-        handleReset();
     }).catch(console.error) 
 }
   }

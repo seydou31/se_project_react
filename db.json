@@ -103,12 +103,6 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
     },
     {
-      "name": "Tom Ford",
-      "imageUrl": "https://www.mrporter.com/variants/images/1647597348348279/cu/w2000_q60.jpg",
-      "weather": "warm",
-      "_id": 17
-    },
-    {
       "name": "Air max",
       "imageUrl": "https://sneakernews.com/wp-content/uploads/2023/11/nike-air-max-90-gore-tex-infrared-fd5810-101-3.jpg",
       "weather": "warm",
