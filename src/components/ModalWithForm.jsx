@@ -7,12 +7,12 @@ export default function ModalWithForm({
   title,
   isOpen,
   onClick,
-  dom,
   onSubmit,
-  isFormValid
+  isFormValid,
+  handleOverlayClick
 }) {
   return (
-    <div ref={dom} className={`modal ${isOpen ? "modal_is-opened" : ""}`}>
+    <div className={`modal ${isOpen ? "modal_is-opened" : ""}`}  onClick={handleOverlayClick}>
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
         <button className="modal__close-btn" onClick={onClick}>

@@ -3,20 +3,19 @@ import { useForm} from "../../src/hooks/useForm.js";
 import { addItem } from "../utils/api.js";
 import { useState, useEffect } from "react";
 
-export default function AddItemModal({ isOpen, onClick, dom , onAddItem}) {
+export default function AddItemModal({ isOpen, onClick, handleOverlayClick , onAddItem}) {
   const { values, handleChange, handleReset } = useForm({
     name: "",
     imageUrl: "",
     weather: ""
   });
-  
- const [errors, setErrors] =  useState({});
+  const [errors, setErrors] =  useState({});
  
 useEffect(() => {
   if (!isOpen) {
     handleReset();
   }
-}, [isOpen, handleReset]);
+}, [isOpen]);
 
 
  function validate(){
@@ -33,7 +32,8 @@ useEffect(() => {
   function handleSubmit(e){
      e.preventDefault();
     if (validate()){
-        addItem(values).then((data) => {
+      const token = localStorage.getItem("jwt");
+        addItem(values, token).then((data) => {
         onAddItem(data)
     }).catch(console.error) 
 }
@@ -53,7 +53,7 @@ useEffect(() => {
       title="New garment"
       isOpen={isOpen}
       onClick={onClick}
-      dom={dom}
+      handleOverlayClick={handleOverlayClick}
       onSubmit={handleSubmit}
       isFormValid={isFormValid()}
     >

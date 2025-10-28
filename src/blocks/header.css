@@ -48,6 +48,19 @@
 .header__avatar {
   width: 40px;
   height: 40px;
+  border-radius: 50%;
+}
+
+.header__placeholder{
+   width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
 }
 
 .header__link:link, .header__link:visited{
@@ -56,4 +69,30 @@
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.header__signup{
+   border: none;
+   background-color: transparent;
+   font-family: "Cabinet Grotesk", Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.header__signup:hover{
+  cursor: pointer;
+}
+
+.header__signin:hover{
+  cursor: pointer;
+}
+
+.header__signin{
+ border: none;
+   background-color: transparent;
+   font-family: "Cabinet Grotesk", Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
 }

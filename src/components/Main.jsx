@@ -5,7 +5,7 @@ import '../blocks/cards.css'
 import '../blocks/main.css'
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
 
-export default function Main({weatherData, handleCardClick, clothes}) {
+export default function Main({weatherData, handleCardClick, clothes, isLiked, onCardLike, isLoggedIn}) {
 
   const currentTemperatureUnit = React.useContext(CurrentTemperatureUnitContext);
 
@@ -18,7 +18,7 @@ export default function Main({weatherData, handleCardClick, clothes}) {
             {clothes.filter((item) => {
                 return item.weather === weatherData.type
             }).map((item) => {
-                return <ItemCard key={item._id} item={item} onCardClick={handleCardClick} />
+                return <ItemCard isLoggedIn={isLoggedIn} onCardLike={onCardLike} isLiked={isLiked} key={item._id} item={item} onCardClick={handleCardClick} />
             })}
         </ul>
       </section>

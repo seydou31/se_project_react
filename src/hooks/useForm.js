@@ -8,7 +8,7 @@ export function useForm(defaultValues) {
  
   const handleChange = (event) => {
     const { value, name } = event.target;
-    setValues({ ...values, [name]: value });
+    setValues( prev => ({ ...prev, [name]: value }));
     
   };
 

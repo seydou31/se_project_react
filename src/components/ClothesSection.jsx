@@ -1,6 +1,10 @@
 import ItemCard from "./ItemCard.jsx";
+import { useContext } from "react";
+import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
 export default function ClothesSection({ onClick, handleCardClick, clothes }) {
+
+const { currentUser } = useContext(CurrentUserContext);
   return (
     <section className="profile__content">
       <div className="profile__items-hdr">
@@ -10,15 +14,17 @@ export default function ClothesSection({ onClick, handleCardClick, clothes }) {
         </button>
       </div>
       <div className="profile__items">
-        {clothes.map((item) => {
-          return (
-            <ItemCard
-              key={item._id}
-              item={item}
-              onCardClick={handleCardClick}
-            />
-          );
-        })}
+        {clothes
+          .filter((item) => item.owner === currentUser._id)
+          .map((item) => {
+            return (
+              <ItemCard
+                key={item._id}
+                item={item}
+                onCardClick={handleCardClick}
+              />
+            );
+          })}
       </div>
     </section>
   );
