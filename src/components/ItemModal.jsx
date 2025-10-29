@@ -9,10 +9,8 @@ export default function ItemModal({
   handleDeleteModal,
 }) {
   const { currentUser } = useContext(CurrentUserContext);
-  if (!currentUser) {
-    return null;
-  }
-  const isOwn = card.owner === currentUser._id;
+ 
+  const isOwn = card.owner === currentUser?._id;
 
   return (
     <div className={`modal ${isOpen ? "modal_is-opened" : ""}`}>

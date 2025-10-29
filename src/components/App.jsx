@@ -45,7 +45,14 @@ function App() {
   const [clothes, setClothes] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState({
+    name: "",
+    email: "",
+    avatar: "",
+    _id: "",
+  });
+
+  // currentUser = {name: "Bob", email: sdlfjsldf, } currentUser.name
 
   useEffect(() => {
     function handleCloseModalEscape(e) {
@@ -77,11 +84,17 @@ function App() {
       .catch(console.error);
   }, []);
 
+  // auto logs the user in on page load
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (!token) {
-      setIsLoggedIn(false);
-      setCurrentUser(null);
+      //     setIsLoggedIn(false);
+      //     setCurrentUser({
+      //   name: "",
+      //   email: "",
+      //   avatar: "",
+      //   _id: "",
+      // });
       return;
     }
     getUser(token)
@@ -91,10 +104,15 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setIsLoggedIn(false);
-        setCurrentUser(null);
+        // setIsLoggedIn(false);
+        // setCurrentUser({
+        //   name: "",
+        //   email: "",
+        //   avatar: "",
+        //   _id: "",
+        // });
       });
-  }, [isLoggedIn]);
+  }, []);
 
   function handleCurrentTemperatureUnit() {
     currentTemperatureUnit === "F"
@@ -155,27 +173,27 @@ function App() {
 
   function handleRegistration(e, formdata) {
     e.preventDefault();
-    console.log("starting...");
-    signUp(formdata)
+   return  signUp(formdata)
       .then(() => {
         return signIn({ email: formdata.email, password: formdata.password });
       })
       .then((res) => {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
-          setIsLoggedIn(true);
-          handleCloseModal();
+         return getUser(res.token)
         }
+      }).then((user) => {
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+        handleCloseModal();
       })
-      .catch((err) => {
-        console.error("Sign in error:", err);
-      });
+      
   }
 
   function handleProfileDataChange(e, formdata) {
     const token = localStorage.getItem("jwt");
     e.preventDefault();
-    updateUserData(formdata, token).then((res) => {
+   return  updateUserData(formdata, token).then((res) => {
       setCurrentUser(res);
       handleCloseModal();
     });
@@ -203,25 +221,34 @@ function App() {
   };
 
   const handleLogout = () => {
-  // Remove token from localStorage
-  localStorage.removeItem("jwt");
-  
-  // Reset user-related state
-  setCurrentUser({});
-  setIsLoggedIn(false);
-};
+    // Remove token from localStorage
+    localStorage.removeItem("jwt");
 
- const handleLogin = (e, values) => {
-     e.preventDefault();
-     signIn(values).then((res) => {
+    // Reset user-related state
+    setCurrentUser({
+      name: "",
+      email: "",
+      avatar: "",
+      _id: "",
+    });
+    setIsLoggedIn(false);
+  };
+
+  const handleLogin = (e, values) => {
+    e.preventDefault();
+    return signIn(values).then((res) => {
       localStorage.setItem("jwt", res.token);
+
+       return getUser(res.token)
+     }).then((user) => {
+       setCurrentUser(user);
       setIsLoggedIn(true);
       handleCloseModal();
      })
- }
+  };
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser }}>
+    <CurrentUserContext.Provider value={{ currentUser, isLoggedIn }}>
       <div className="app">
         <div className="app__content">
           <CurrentTemperatureUnitContext.Provider
@@ -238,8 +265,8 @@ function App() {
                 path="/"
                 element={
                   <Main
-                  isLoggedIn={isLoggedIn}
-                  onCardLike={handleCardLike}
+                    isLoggedIn={isLoggedIn}
+                    onCardLike={handleCardLike}
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
                     clothes={clothes}
@@ -251,6 +278,7 @@ function App() {
                 element={
                   <ProtectedRoute isLoggedIn={isLoggedIn}>
                     <Profile
+                      isLoggedIn={isLoggedIn}
                       clothes={clothes}
                       handleCardClick={handleCardClick}
                       onClick={handleOpenModalWithForm}

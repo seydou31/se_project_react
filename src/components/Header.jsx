@@ -17,7 +17,7 @@ export default function Header({
     day: "numeric",
   });
 
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
   const userFirstLetter = currentUser?.name?.charAt(0).toUpperCase();
   return (
     <header className="header">
@@ -32,10 +32,10 @@ export default function Header({
       <div className="header__right">
         <div className="header__btn-user">
           <ToggleSwitch />
-          <button onClick={onClick} className="header__button" type="button">
+         {isLoggedIn && <button onClick={onClick} className="header__button" type="button">
             + Add clothes
-          </button>
-          {currentUser ? (
+          </button>}
+          {isLoggedIn ? (
             currentUser.avatar ? (
               <Link className="header__link" to="/profile">
                 <p className="header__user">{currentUser.name}</p>
@@ -46,9 +46,11 @@ export default function Header({
                 />
               </Link>
             ) : (
+              <Link className="header__link" to="/profile">
               <div className="header-placeholder">
                 {userFirstLetter}
               </div>
+              </Link>
             )
           ) : (
             <>

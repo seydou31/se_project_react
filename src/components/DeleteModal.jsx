@@ -5,7 +5,6 @@ export default function DeleteModal({
   isOpen,
   handleDeleteCard,
   card,
-  clothes,
 }) {
   return (
     <div className={`modal ${isOpen ? "modal_is-opened" : ""}`}>

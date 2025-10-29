@@ -10,9 +10,9 @@ export default function Sidebar({handleEditProfileModal, onClick}) {
         <img
           className="profile__avatar"
           alt="avatar"
-          src={currentUser.avatar}
+          src={currentUser?.avatar}
         />
-        <p className="profile__user">{currentUser.name}</p>
+        <p className="profile__user">{currentUser?.name}</p>
       </div>
       <div className="profile__edit-log">
         <button className="profile__edit-btn" onClick={handleEditProfileModal}>Change Profile data</button>

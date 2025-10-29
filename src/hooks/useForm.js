@@ -16,5 +16,5 @@ export function useForm(defaultValues) {
     setValues(defaultValues);
   };
 
-  return { values, handleChange, handleReset };
+  return { values, setValues,  handleChange, handleReset };
 }

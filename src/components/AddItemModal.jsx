@@ -1,51 +1,61 @@
 import ModalWithForm from "./ModalWithForm.jsx";
-import { useForm} from "../../src/hooks/useForm.js";
+import { useForm } from "../../src/hooks/useForm.js";
 import { addItem } from "../utils/api.js";
 import { useState, useEffect } from "react";
 
-export default function AddItemModal({ isOpen, onClick, handleOverlayClick , onAddItem}) {
+export default function AddItemModal({
+  isOpen,
+  onClick,
+  handleOverlayClick,
+  onAddItem,
+}) {
   const { values, handleChange, handleReset } = useForm({
     name: "",
     imageUrl: "",
-    weather: ""
+    weather: "",
   });
-  const [errors, setErrors] =  useState({});
- 
-useEffect(() => {
-  if (!isOpen) {
-    handleReset();
-  }
-}, [isOpen]);
+  const [errors, setErrors] = useState({});
 
+  useEffect(() => {
+    if (!isOpen) {
+      handleReset();
+    }
+  }, [isOpen]);
 
- function validate(){
+  function validate() {
     let newErrors = {};
-    if(!values.name) {newErrors.name = 'Name is required';}
-     if(!values.imageUrl) {newErrors.imageUrl = 'URL is required';}
-     if(!values.weather) {newErrors.weather = 'Please select a weather type';}  
-     setErrors(newErrors);
-     return Object.keys(newErrors).length === 0;
+    if (!values.name) {
+      newErrors.name = "Name is required";
+    }
+    if (!values.imageUrl) {
+      newErrors.imageUrl = "URL is required";
+    }
+    if (!values.weather) {
+      newErrors.weather = "Please select a weather type";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   }
 
-  
-
-  function handleSubmit(e){
-     e.preventDefault();
-    if (validate()){
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (validate()) {
       const token = localStorage.getItem("jwt");
-        addItem(values, token).then((data) => {
-        onAddItem(data)
-    }).catch(console.error) 
-}
+      addItem(values, token)
+        .then((data) => {
+          onAddItem(data);
+        })
+        .catch(console.error);
+    }
   }
 
   const isFormValid = () => {
-  return (
-    values.name.trim() !== "" &&
-    values.imageUrl.trim() !== "" &&
-    values.weather !== ""
-  );
-};
+    return (
+      values.name.trim() !== "" &&
+      values.imageUrl.trim() !== "" &&
+      values.weather !== ""
+    );
+  };
 
   return (
     <ModalWithForm
@@ -67,7 +77,6 @@ useEffect(() => {
           placeholder="name"
           value={values.name}
           onChange={handleChange}
-          
         />
       </label>
       {errors.name && <p className="modal__validation">{errors.name}</p>}
@@ -83,7 +92,9 @@ useEffect(() => {
           onChange={handleChange}
         />
       </label>
-      {errors.imageUrl && <p className="modal__validation">{errors.imageUrl}</p>}
+      {errors.imageUrl && (
+        <p className="modal__validation">{errors.imageUrl}</p>
+      )}
       <fieldset className="modal__radio-btns">
         <legend className="modal__radio-lgd">Select the weather type</legend>
         <label htmlFor="hot" className="modal__label modal__label_type_radio">
@@ -94,7 +105,7 @@ useEffect(() => {
             id="hot"
             value="hot"
             onChange={handleChange}
-            checked={values.weather === 'hot'}
+            checked={values.weather === "hot"}
           />
           Hot
         </label>
@@ -106,7 +117,7 @@ useEffect(() => {
             id="warm"
             value="warm"
             onChange={handleChange}
-             checked={values.weather === 'warm'}
+            checked={values.weather === "warm"}
           />
           Warm
         </label>
@@ -118,11 +129,13 @@ useEffect(() => {
             id="cold"
             value="cold"
             onChange={handleChange}
-             checked={values.weather === 'cold'}
+            checked={values.weather === "cold"}
           />
           Cold
         </label>
-        {errors.weather && <p className="modal__validation">{errors.weather}</p>}
+        {errors.weather && (
+          <p className="modal__validation">{errors.weather}</p>
+        )}
       </fieldset>
     </ModalWithForm>
   );

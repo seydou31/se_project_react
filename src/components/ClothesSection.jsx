@@ -2,7 +2,7 @@ import ItemCard from "./ItemCard.jsx";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
-export default function ClothesSection({ onClick, handleCardClick, clothes }) {
+export default function ClothesSection({ onClick, handleCardClick, clothes, isLoggedIn }) {
 
 const { currentUser } = useContext(CurrentUserContext);
   return (
@@ -15,10 +15,11 @@ const { currentUser } = useContext(CurrentUserContext);
       </div>
       <div className="profile__items">
         {clothes
-          .filter((item) => item.owner === currentUser._id)
+          .filter((item) => item.owner === currentUser?._id)
           .map((item) => {
             return (
               <ItemCard
+              isLoggedIn={isLoggedIn}
                 key={item._id}
                 item={item}
                 onCardClick={handleCardClick}
