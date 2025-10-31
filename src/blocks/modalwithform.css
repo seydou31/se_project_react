@@ -187,3 +187,18 @@
 .modal__validation {
   color: #ff4d00;
 }
+
+.modal__alternate{
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+   font-family: "Cabinet Grotesk", Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #00000080;
+}
+
+.modal__alternate{
+  cursor: pointer;
+}

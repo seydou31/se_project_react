@@ -52,7 +52,6 @@ function App() {
     _id: "",
   });
 
-  // currentUser = {name: "Bob", email: sdlfjsldf, } currentUser.name
 
   useEffect(() => {
     function handleCloseModalEscape(e) {
@@ -88,13 +87,7 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (!token) {
-      //     setIsLoggedIn(false);
-      //     setCurrentUser({
-      //   name: "",
-      //   email: "",
-      //   avatar: "",
-      //   _id: "",
-      // });
+     
       return;
     }
     getUser(token)
@@ -234,6 +227,16 @@ function App() {
     setIsLoggedIn(false);
   };
 
+  function handleSideLogin(){
+    handleCloseModal();
+    setActiveModal("loginmodal");
+  }
+
+  function handleSideSignUp(){
+    handleCloseModal();
+    setActiveModal("registermodal");
+  }
+
   const handleLogin = (e, values) => {
     e.preventDefault();
     return signIn(values).then((res) => {
@@ -284,6 +287,7 @@ function App() {
                       onClick={handleOpenModalWithForm}
                       handleEditProfileModal={handleEditProfileModal}
                       handleLogout={handleLogout}
+                      handleCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }
@@ -319,12 +323,14 @@ function App() {
           onClick={handleCloseModal}
           handleOverlayClick={handleOverlayClick}
           handleRegistration={handleRegistration}
+          handleSideLogin={handleSideLogin}
         />
         <LoginModal
           isOpen={activeModal === "loginmodal"}
           onClick={handleCloseModal}
           handleOverlayClick={handleOverlayClick}
           handleLogin={handleLogin}
+          handleSideSignUp={handleSideSignUp}
         />
         <EditProfileModal
           isOpen={activeModal === "editprofilemodal"}

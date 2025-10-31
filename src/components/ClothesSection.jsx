@@ -2,7 +2,7 @@ import ItemCard from "./ItemCard.jsx";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
-export default function ClothesSection({ onClick, handleCardClick, clothes, isLoggedIn }) {
+export default function ClothesSection({ onClick, handleCardClick, clothes, isLoggedIn, handleCardLike }) {
 
 const { currentUser } = useContext(CurrentUserContext);
   return (
@@ -23,6 +23,7 @@ const { currentUser } = useContext(CurrentUserContext);
                 key={item._id}
                 item={item}
                 onCardClick={handleCardClick}
+                onCardLike={handleCardLike}
               />
             );
           })}

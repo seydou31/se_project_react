@@ -9,7 +9,9 @@ export default function ModalWithForm({
   onClick,
   onSubmit,
   isFormValid,
-  handleOverlayClick
+  handleOverlayClick,
+  alternate,
+  handleSideModal
 }) {
   return (
     <div className={`modal ${isOpen ? "modal_is-opened" : ""}`}  onClick={handleOverlayClick}>
@@ -24,9 +26,12 @@ export default function ModalWithForm({
         </button>
         <form onSubmit={onSubmit} className="modal__form">
           {children}
+          <div className="modal__buttons">
           <button className="modal__submit-btn" type="submit" disabled={!isFormValid}>
             {buttonText}
           </button> 
+          <button onClick={handleSideModal} className="modal__alternate">{alternate}</button>
+          </div>
         </form>
       </div>
     </div>

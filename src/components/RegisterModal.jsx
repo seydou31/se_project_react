@@ -1,7 +1,7 @@
 import ModalWithForm from "./ModalWithForm.jsx";
 import { useForm} from "../../src/hooks/useForm.js";
 
-export default function RegisterModal({isOpen, onClick,  handleOverlayClick, handleRegistration}) {
+export default function RegisterModal({isOpen, onClick,  handleOverlayClick, handleRegistration, handleSideLogin}) {
 
    const { values, handleChange, handleReset } = useForm({
     email: "",
@@ -32,10 +32,12 @@ function handleSubmit(e){
      handleOverlayClick={handleOverlayClick}
       buttonText="Sign up"
       title="Sign up"
+      alternate="or Log in"
       isOpen={isOpen}
       onClick={onClick}
       onSubmit={handleSubmit}
       isFormValid={isFormValid()}
+      handleSideModal={handleSideLogin}
     >
       <label htmlFor="register-email" className="modal__label">
         Email

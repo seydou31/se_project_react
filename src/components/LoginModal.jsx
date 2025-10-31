@@ -1,7 +1,7 @@
 import ModalWithForm from "./ModalWithForm.jsx";
 import { useForm } from "../../src/hooks/useForm.js";
 
-export default function LoginModal({ isOpen, onClick, handleOverlayClick, handleLogin }) {
+export default function LoginModal({ isOpen, onClick, handleOverlayClick, handleLogin, handleSideSignUp }) {
   const { values, handleChange, handleReset } = useForm({
     email: "",
     password: "",
@@ -24,12 +24,14 @@ const handleSubmit = (e) => {
   return (
     <ModalWithForm
       handleOverlayClick={handleOverlayClick}
-      buttonText="Sign in"
-      title="Sign in"
+      buttonText="Log in"
+      title="Log in"
+      alternate="or Sign Up"
       isOpen={isOpen}
       onClick={onClick}
       onSubmit={handleSubmit}
       isFormValid={isFormValid()}
+       handleSideModal={handleSideSignUp}
     >
       <label htmlFor="login-email" className="modal__label">
         Email
