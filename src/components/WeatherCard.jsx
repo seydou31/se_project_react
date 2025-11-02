@@ -23,7 +23,7 @@ export default function WeatherCard({ weatherData }) {
 
   return (
     <section className="weather-card">
-      <p className="weather-card__temp">{weatherData.temp[currentTemperatureUnit.currentTemperatureUnit]}&deg;</p>
+      <p className="weather-card__temp">{weatherData.temp[currentTemperatureUnit.currentTemperatureUnit]}&deg; {currentTemperatureUnit.currentTemperatureUnit}</p>
       <img
         className="weather-card__image"
         src={filteredOption}

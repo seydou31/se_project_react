@@ -18,7 +18,7 @@ export default function LoginModal({ isOpen, onClick, handleOverlayClick, handle
 const handleSubmit = (e) => {
   handleLogin(e, values).then(() => {
      handleReset();
-  })
+  }).catch(console.error)
 }
 
   return (

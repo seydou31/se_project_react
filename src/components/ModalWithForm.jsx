@@ -30,7 +30,7 @@ export default function ModalWithForm({
           <button className="modal__submit-btn" type="submit" disabled={!isFormValid}>
             {buttonText}
           </button> 
-          <button onClick={handleSideModal} className="modal__alternate">{alternate}</button>
+          <button type="button" onClick={handleSideModal} className="modal__alternate">{alternate}</button>
           </div>
         </form>
       </div>

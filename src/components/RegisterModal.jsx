@@ -23,7 +23,7 @@ export default function RegisterModal({isOpen, onClick,  handleOverlayClick, han
 function handleSubmit(e){
     handleRegistration(e,values).then(() => {
      handleReset();
-  })
+  }).catch(console.error)
 }
   
 

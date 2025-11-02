@@ -34,7 +34,7 @@ const {currentUser} = useContext(CurrentUserContext);
 function handleSubmit(e){
     handleProfileDataChange(e,values).then(() => {
       handleReset();
-    })
+    }).catch(console.error)
     
 }
 

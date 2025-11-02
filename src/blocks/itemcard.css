@@ -1,5 +1,6 @@
 .itemcard__item {
   width: 325px;
+  height: 408px;
   display: flex;
   justify-content: center;
   position: relative;
@@ -21,8 +22,11 @@
 }
 
 .itemcard__image {
+  width:325px ;
   border-radius: 12px;
   max-width: 100%;
+  object-fit: fill;
+  padding: 0;
 }
 
 .itemcard__like-btn{
