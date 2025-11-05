@@ -14,7 +14,6 @@ export default function EditProfileModal({isOpen, onClick,  handleOverlayClick, 
 const {currentUser} = useContext(CurrentUserContext);
 
  useEffect(() => {
-  console.log("Effect running:", { isOpen, currentUser });
   if (isOpen && currentUser) {
     
     setValues({
